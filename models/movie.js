@@ -1,8 +1,21 @@
 module.exports = function(sequelize, DataTypes) {
-    var Movie = sequelize.define("Movie", {
-      // Giving the Movie model a name of type STRING
-      title: DataTypes.STRING,
-      director: DataTypes.STRING  
+var Movie = sequelize.define("Movie", {
+// Giving the Movie model a name of type STRING
+title: DataTypes.STRING,
+location: DataTypes.STRING,
+address: { type: DataTypes.STRING },
+latitude: {
+  type: DataTypes.INTEGER,
+  allowNull: true,
+  defaultValue: null,
+  validate: { min: -90, max: 90 }
+},
+longitude: {
+  type: DataTypes.INTEGER,
+  allowNull: true,
+  defaultValue: null,
+  validate: { min: -180, max: 180 }
+}
     });
   
     Movie.associate = function(models) {

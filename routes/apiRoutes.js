@@ -1,24 +1,24 @@
 var db = require("../models");
+var moviesData = require("../data/movieData");
+
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
+  // Get all movies
+  app.get("/api/movies", function(req, res) {
+    res.json(moviesData);
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/movies", function(req, res) {
+    db.Movie.create(req.body).then(function(dbMovie) {
+      res.json(dbMovie);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/movies/:id", function(req, res) {
+    db.Movie.destroy({ where: { id: req.params.id } }).then(function(dbMovie) {
+      res.json(dbMovie);
     });
   });
 };
