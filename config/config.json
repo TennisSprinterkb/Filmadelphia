@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "myRootPassword",
+    "password": "yourRootPassword",
     "database": "movies_db",
     "host": "localhost",
     "dialect": "mysql"
@@ -15,7 +15,7 @@
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "JAWS_DB_URL",
     "dialect": "mysql"
   }
 }
