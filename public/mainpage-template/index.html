@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nameless Map App</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous" defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" defer></script>
+
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script>
+			var map;
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: 37.5, lng: -80},
+					zoom: 9,
+					disableDefaultUI: true
+				});
+        $(document).ready(function () {
+          $('#ModalMOTD').modal('show');
+        });
+			}
+		</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse p-0">
+      <form class="form-inline mx-2">
+        <div class="btn-toolbar mr-auto" role="toolbar">
+          <div class="btn-group btn-group-sm mr-2" role="group">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><i class="fa fa-bars fa-fw"></i></button>
+          </div>
+          <div class="input-group input-group-sm">
+            <input type="text" class="form-control" style="border:1px solid #adadad;" placeholder="Name or Address" aria-describedby="btnGroupAddon">
+            <button class="btn btn-secondary input-group-addon"><i class="fa fa-search fa-fw"></i></button>
+          </div>
+        </div>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountmenu"><span class="hidden-sm-down mr-2">Login</span><i class="fa fa-user"></i></a>
+          <div id="accountmenu" class="dropdown">
+          <div class="dropdown-menu dropdown-menu-right p-0">
+            <div class="card">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title">Special title treatment</h4>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </li>
+      </ul>
+      </form>
+    </nav>
+    <!-- Broken Nav -->
+  	<!-- Modal Sidebar -->
+  	<div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog">
+  			<div class="modal-content">
+          <div id="SideMenu">
+            <div class="card">
+              <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuLayers" data-parent="#SideMenu">
+                <i class="fa fa-map fa-fw"></i>&nbsp;Map Layers
+              </div>
+              <div id="MenuLayers" class="collapse show">
+                <div class="card-block list-group mg1">
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Road</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Hybrid</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuStuff" data-parent="#SideMenu">
+                <i class="fa fa-bullseye fa-fw"></i>&nbsp;Stuff 'n Junk
+              </div>
+              <div id="MenuStuff" class="collapse">
+                <div class="card-block list-group mg1">
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuTools" data-parent="#SideMenu">
+                <i class="fa fa-wrench fa-fw"></i>&nbsp;Tools
+              </div>
+              <div id="MenuTools" class="collapse">
+                <div class="card-block list-group mg1">
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuSettings" data-parent="#SideMenu">
+                <i class="fa fa-cog fa-fw"></i>&nbsp;Settings
+              </div>
+              <div id="MenuSettings" class="collapse">
+                <div class="card-block list-group mg1">
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                  <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  			</div><!-- modal-content -->
+  		</div><!-- modal-dialog -->
+  	</div><!-- modal -->
+    <div id="map"></div>
+		<div id="statusbar"></div>
+
+		<div class="modal fade" id="ModalMOTD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Unnamed Map Application</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <p>
+		    So far, I'm happy, except that damned navbar.  If I stick with BS/JQ, I'll probabably re-write it.  It's got to
+		    be responsive, but I also need it to be restricted to 40-50 pixels.  On a single-page app, I really don't need
+		    much more than a menu toggle, search bar, and account button.  Plenty of space for that, even on mobile devices.
+		  </p>
+		  <p>
+		    Getting a model sidebar with an accordion menu was a bit of a pain, but I'm reasonably pleased with the results.
+		    I'm really not sure yet what's going to go in there, but I wanted a compact place to keep things.  I think it
+		    will work out quite nicely.  I expect that most items in this menu will be dynamically populated.
+		  </p>
+		  <p>
+		    The account dropdown will have a login form, then be replaced with account information after authentication.
+		  </p>
+		  <p>
+		    I'm not sure how I'm going to handle displaying map info, but it will probably be a full-height div on the right
+		    side of the screen.
+		  </p>
+      </div>
+    </div>
+  </div>
+</div>
+	</body>
+</html>
