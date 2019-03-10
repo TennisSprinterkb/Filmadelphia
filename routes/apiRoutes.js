@@ -56,49 +56,49 @@ module.exports = function (app) {
   });
 
   // Get all movies
-  app.get("/api/movies", function(req, res) {
+  app.get("/api/movies", function (req, res) {
     res.json(moviesData);
   });
 
   // Create a new example
-  app.post("/api/movies", function(req, res) {
-    if (req.user){
-    var closeMatch = {
-      title: "",
-      location: "",
-      address: "",
-      scoreDifference: 1000
-    };
-    console.log(req.body);
-    // var userScore = [];
-    // var userData = req.body;
-    // userScore = req.body.scores;
+  app.post("/api/movies", function (req, res) {
+    if (req.user) {
+      var closeMatch = {
+        title: "",
+        location: "",
+        address: "",
+        scoreDifference: 1000
+      };
+      console.log(req.body);
+      // var userScore = [];
+      // var userData = req.body;
+      // userScore = req.body.scores;
 
-    // console.log(req.body.scores);
+      // console.log(req.body.scores);
 
-    var totalDifference = 0;
-    function getSum(total, num) {
-      return total + num;
-    }
-
-    for (var i = 0; i < movieData.length; i++) {
-      console.log(movieData[i]);
-      totalDifference = 0;
-
-      totalDifference += Math.abs(
-        parseInt((req.body.scores.reduce(getSum)) - parseInt(movieData[i].score)));
-
-      if (totalDifference <= closeMatch.scoreDifference) {
-        closeMatch.name = movieData[i].name;
-        closeMatch.location = movieData[i].location;
-        closeMatch.address = movieData[i].address;
-        closeMatch.scoreDifference = totalDifference;
+      var totalDifference = 0;
+      function getSum(total, num) {
+        return total + num;
       }
+
+      for (var i = 0; i < movieData.length; i++) {
+        console.log(movieData[i]);
+        totalDifference = 0;
+        userTotal = req.body.scores;
+        totalDifference += Math.abs(
+          parseInt(userTotal.reduce(getSum)) - parseInt(movieData[i].score));
+        console.log(totalDifference)
+        if (totalDifference >= closeMatch.scoreDifference) {
+          closeMatch.title = movieData[i].title;
+          closeMatch.location = movieData[i].location;
+          closeMatch.address = movieData[i].address;
+          closeMatch.scoreDifference = totalDifference;
+        }
+      }
+      console.log(closeMatch);
+      // movieData.push(userData);
+      res.json(closeMatch);
     }
-    console.log(closeMatch);
-    // movieData.push(userData);
-    res.json(closeMatch);
-  }
   });
   // db.Movie.create(req.body).then(function (dbMovie) {
   //   res.json(dbMovie);
