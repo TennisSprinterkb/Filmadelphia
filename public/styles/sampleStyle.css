@@ -1,7 +1,7 @@
 /* Styles go here */
 
 
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+/* @import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css); */
 
 html, body {
 	height: 100%;
@@ -9,8 +9,16 @@ html, body {
 	padding: 0;
 }
 
+a  {
+	color: black;
+}
 .navbar {
-  z-index: 9999;
+	z-index: 9999;
+	color: #223438;
+}
+
+form  {
+	max-width: 100%;
 }
 
 #map {
@@ -19,7 +27,7 @@ html, body {
 	left: 0;
   bottom:1.5em;
 	z-index: 200;
-	width: 100%;
+	width: 60%;
 	background: green;
 }
 
@@ -31,6 +39,7 @@ html, body {
 	height:1.5em;
 	border-top: 2px solid #444;
 	background-color: #d8d8d8;
+	color: #223438;
 }
 
 .collapse.width {
@@ -89,6 +98,10 @@ html, body {
 	
 	.modal.left.fade.show .modal-dialog{
 		left: 0;
+	}
+
+	#mapButton {
+		background-color: #223438;
 	}
         
 /* ----- MODAL STYLE ----- */

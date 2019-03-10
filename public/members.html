@@ -1,188 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Filmadelphia</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="stylesheets/style.css" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+  <link href="styles/sampleStyle.css" rel="stylesheet">
 </head>
 
 <body>
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">Logout</a>
-    </div>
-  </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="jumbotron text-center">
-        <h2> Welcome <span class="member-name"></span></h2>
-            <h1><i class="text-center" aria-hidden="true"></i>Filmadelphia</h1>
-            
-            <h2>Welcome to Filemadelphia a place where you can come see where movies were filmed all around Philadelphia and learn the historical significance about that site.</h2>
-            <h2>You can choose to browse our map and pick a movie from which ever neighborhood you would like, or take our survey to match you up with the best movie/tour to try.</h2>
-            <br>
-      
-            <div>
-              <button type="button" class="btn btn-md btn-info" data-toggle="modal" data-target="#surveyModel"><h3><span class="glyphicon glyphicon-list-alt"></span> Match Survey</h3></button> | <a href="./browse.html"><button type="button" class="btn btn-md btn-success"><h3><span class="glyphicon glyphicon-map-marker"></span> Browse Map</h3></button></a>
-            </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">Logout</a>
       </div>
-      
-      <footer class="footer">
-        <div class="container text-center">
-          <p><a href="#">learn more about the Creators</a> | <a href="#">Link to things</a></p>
-        </div>
-      </footer>
-      
-   </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron text-center">
+          <h2> Welcome <span class="member-name"></span></h2>
+          <h1><i class="text-center" aria-hidden="true"></i>Filmadelphia</h1>
 
-    <div id="surveyModel" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Fill Out Survey Below</h5>
-            <h3 class="modal-title"><strong>Click the submit button below to take you to your match!</strong></h3>
+          <h2>Welcome to Filmadelphia a place where you can come see where movies were filmed all around Philadelphia
+            and learn the historical significance about that site.</h2>
+          <h2>You can choose to browse our map and pick a movie from which ever neighborhood you would like, or take our
+            survey to match you up with the best movie/tour to try.</h2>
+          <br>
+
+          <div class="text-center">
+            <button type="button" class="btn btn-md btn-info mt-2" data-toggle="modal" data-target="#surveyModel">
+              <h3><span class="glyphicon glyphicon-list-alt"></span> Match Survey</h3>
+            </button> | <a href="./map_interactive.html"><button type="button" class="btn btn-md btn-success mt-2" id="mapButton">
+                <h3><span class="glyphicon glyphicon-map-marker"></span> Browse Map</h3>
+              </button></a>
           </div>
-          <div class="modal-body">
-            <div class="container text-center">
-              <form action="" method="GET" role="form" class="absolute">
+        </div>
+
+        <footer class="footer">
+          <div class="container text-center">
+            <p><a href="#">learn more about the Creators</a> | <a href="#">Link to things</a></p>
+          </div>
+        </footer>
+
+      </div>
+
+      <div id="surveyModel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fill Out Survey Below</h5>
+              <h3 class="modal-title"><strong>Click the submit button below to take you to your match!</strong></h3>
+            </div>
+            <div class="modal-body text-center">
+              <!-- <div class="container text-center"> -->
+              <form role="form" class="absolute" id="surveyForm">
                 <h2>Survey Questions</h2>
                 <h3><strong>Q1</strong></h3>
                 <h4>Would you say you are athletic?</h4>
-                  <select data-placeholder="" class="chosen-select" id="q1">
-                    <option value=""></option>
-                    <option value="1">1 (No Im lazy!)</option>
-                    <option value="2">2</option>
-                    <option value="3">3(Meh)</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (YASSS!!!)</option>
-                  </select>
-              
+                <select data-placeholder="" class="chosen-select" id="q1" required>
+                  <option value=""></option>
+                  <option value="1">1 (No Im lazy!)</option>
+                  <option value="2">2</option>
+                  <option value="3">3(Meh)</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (YASSS!!!)</option>
+                </select>
+
                 <h3><strong>Q2</strong></h3>
                 <h4>Are you a loyal person?</h4>
-                  <select data-placeholder="" class="chosen-select" id="q2">
-                    <option value=""></option>
-                    <option value="1">1 (Not really)</option>
-                    <option value="2">2</option>
-                    <option value="3">3(Kinda)</option>
-                    <option value="4">4</option>
-                    <option value="5">5 (YASSS!!!)</option>
-                  </select>
-              
+                <select data-placeholder="" class="chosen-select" id="q2" required>
+                  <option value=""></option>
+                  <option value="1">1 (Not really)</option>
+                  <option value="2">2</option>
+                  <option value="3">3(Kinda)</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (YASSS!!!)</option>
+                </select>
+
                 <h3><strong>Q3</strong></h3>
                 <h4>How easily frightened are you?</h4>
-                    <select data-placeholder="" class="chosen-select" id="q3">
-                      <option value=""></option>
-                      <option value="1">1 (Never Scared)</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5 (Yikes!!)</option>
-                    </select>
-              
+                <select data-placeholder="" class="chosen-select" id="q3" required>
+                  <option value=""></option>
+                  <option value="1">1 (Never Scared)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Yikes!!)</option>
+                </select>
+
                 <h3><strong>Q4</strong></h3>
                 <h4>How much of a hustler are you?</h4>
-                    <select data-placeholder="" class="chosen-select" id="q4">
-                      <option value=""></option>
-                      <option value="1">1 (Not that great at it)</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5 (Everyday Im Husltlin!)</option>
-                    </select>
-              
-                          <h3><strong>Q5</strong></h3>
-                          <h4>Do you like stand up?</h4>
-                          <select data-placeholder="" class="chosen-select" id="q5">
-                              <option value=""></option>
-                              <option value="1">1 (Not really)</option>
-                              <option value="2">2</option>
-                              <option value="3">3(Sure)</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (HAHAHA YASSS!!!)</option>
-                          </select>
-              
-                          <h3><strong>Q6</strong></h3>
-                          <h4>Do hospitals scare you?</h4>
-                          <select data-placeholder="" class="chosen-select" id="q6">
-                              <option value=""></option>
-                              <option value="1">1 (I love needles)</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (They are Scary)</option>
-                          </select>
-              
-                          <h3><strong>Q7</strong></h3>
-                          <h4>How fair do you feel the justice system is?</h4>
-                          <select data-placeholder="" class="chosen-select" id="q7">
-                              <option value=""></option>
-                              <option value="1">1 (Super fair)</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (Needs work)</option>
-                          </select>
-              
-                          <h3><strong>Q8</strong></h3>
-                          <h4>I would much rather go outdoors than going clubbing!</h4>
-                          <select data-placeholder="" class="chosen-select" id="q8">
-                              <option value=""></option>
-                              <option value="1">1 (Nope)</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (I love the outdoors!)</option>
-                          </select>
-              
-                          <h3><strong>Q9</strong></h3>
-                          <h4>I love history!?</h4>
-                          <select data-placeholder="" class="chosen-select" id="q9">
-                              <option value=""></option>
-                              <option value="1">1 (Don't really care for it!)</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (YASSS History!!!)</option>
-                          </select>
-              
-                          <h3><strong>Q10</strong></h3>
-                          <h4>Ghosts do not scare me!</h4>
-                          <select data-placeholder="" class="chosen-select" id="q10">
-                              <option value=""></option>
-                              <option value="1">1 (I don't like them!)</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5 (I am a ghost!)</option>
-                          </select>
-              
-                          <br>
-              
-                          <button type="button" class="btn btn-success" id="surveyResults"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button>
-                      
-                    </div>
-                  </div>
-                </form>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Start Over</button>
-                </div>
-             
+                <select data-placeholder="" class="chosen-select" id="q4" required>
+                  <option value=""></option>
+                  <option value="1">1 (Not that great at it)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Everyday Im Husltlin!)</option>
+                </select>
+
+                <h3><strong>Q5</strong></h3>
+                <h4>Do you like stand up?</h4>
+                <select data-placeholder="" class="chosen-select" id="q5" required>
+                  <option value=""></option>
+                  <option value="1">1 (Not really)</option>
+                  <option value="2">2</option>
+                  <option value="3">3(Sure)</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (HAHAHA YASSS!!!)</option>
+                </select>
+
+                <h3><strong>Q6</strong></h3>
+                <h4>Do hospitals scare you?</h4>
+                <select data-placeholder="" class="chosen-select" id="q6" required>
+                  <option value=""></option>
+                  <option value="1">1 (I love needles)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (They are Scary)</option>
+                </select>
+
+                <h3><strong>Q7</strong></h3>
+                <h4>How fair do you feel the justice system is?</h4>
+                <select data-placeholder="" class="chosen-select" id="q7" required>
+                  <option value=""></option>
+                  <option value="1">1 (Super fair)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Needs work)</option>
+                </select>
+
+                <h3><strong>Q8</strong></h3>
+                <h4>I would much rather go outdoors than going clubbing!</h4>
+                <select data-placeholder="" class="chosen-select" id="q8" required>
+                  <option value=""></option>
+                  <option value="1">1 (Nope)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (I love the outdoors!)</option>
+                </select>
+
+                <h3><strong>Q9</strong></h3>
+                <h4>I love history!?</h4>
+                <select data-placeholder="" class="chosen-select" id="q9" required>
+                  <option value=""></option>
+                  <option value="1">1 (Don't really care for it!)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (YASSS History!!!)</option>
+                </select>
+
+                <h3><strong>Q10</strong></h3>
+                <h4>Ghosts do not scare me!</h4>
+                <select data-placeholder="" class="chosen-select" id="q10" required>
+                  <option value=""></option>
+                  <option value="1">1 (I don't like them!)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (I am a ghost!)</option>
+                </select>
+
+                <br>
+
+                <button type="submit" class="btn btn-success mt-2" id="submit"><i class="fa fa-check-circle"
+                    aria-hidden="true"></i>Submit</button>
+              </form>
             </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Start Over</button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </div>
   <script type="text/javascript" src="js/members.js"></script>
 
 </body>
+
 </html>
