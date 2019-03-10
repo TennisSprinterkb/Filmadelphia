@@ -7,26 +7,16 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous" defer></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous" defer></script>
-		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" defer></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" defer></script> -->
+    <link 
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+    rel="stylesheet"  type='text/css'>
+  
+		<link rel="stylesheet" type="text/css" href="../styles/sampleStyle.css">
 
-		<link rel="stylesheet" type="text/css" href="style.css">
-
-		<script>
-			var map;
-			function initMap() {
-				map = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: 37.5, lng: -80},
-					zoom: 9,
-					disableDefaultUI: true
-				});
-        $(document).ready(function () {
-          $('#ModalMOTD').modal('show');
-        });
-			}
-		</script>
 	</head>
 	<body>
     <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse p-0">
@@ -34,10 +24,6 @@
         <div class="btn-toolbar mr-auto" role="toolbar">
           <div class="btn-group btn-group-sm mr-2" role="group">
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><i class="fa fa-bars fa-fw"></i></button>
-          </div>
-          <div class="input-group input-group-sm">
-            <input type="text" class="form-control" style="border:1px solid #adadad;" placeholder="Name or Address" aria-describedby="btnGroupAddon">
-            <button class="btn btn-secondary input-group-addon"><i class="fa fa-search fa-fw"></i></button>
           </div>
         </div>
       <ul class="navbar-nav">
@@ -131,37 +117,5 @@
   	</div><!-- modal -->
     <div id="map"></div>
 		<div id="statusbar"></div>
-
-		<div class="modal fade" id="ModalMOTD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Unnamed Map Application</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-		  <p>
-		    So far, I'm happy, except that damned navbar.  If I stick with BS/JQ, I'll probabably re-write it.  It's got to
-		    be responsive, but I also need it to be restricted to 40-50 pixels.  On a single-page app, I really don't need
-		    much more than a menu toggle, search bar, and account button.  Plenty of space for that, even on mobile devices.
-		  </p>
-		  <p>
-		    Getting a model sidebar with an accordion menu was a bit of a pain, but I'm reasonably pleased with the results.
-		    I'm really not sure yet what's going to go in there, but I wanted a compact place to keep things.  I think it
-		    will work out quite nicely.  I expect that most items in this menu will be dynamically populated.
-		  </p>
-		  <p>
-		    The account dropdown will have a login form, then be replaced with account information after authentication.
-		  </p>
-		  <p>
-		    I'm not sure how I'm going to handle displaying map info, but it will probably be a full-height div on the right
-		    side of the screen.
-		  </p>
-      </div>
-    </div>
-  </div>
-</div>
 	</body>
 </html>

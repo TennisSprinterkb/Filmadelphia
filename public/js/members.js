@@ -1,65 +1,22 @@
-var movieData = require('../../data/movieData.js');
+// var movieData = require('../../data/movieData.js');
 
-module.exports = function (app) {
+$("#surveyResults").on("click", function(event) {
+    event.preventDefault();
+
+var surveyForm = document.getElementById('surveyForm');
+isValid = surveyForm.checkValidity();
+    // function validateForm() {
+    //     var isValid = true;
+    //     $(".chosen-select").each(function() {
+    //         if ($(this).val() === "") {
+    //             isValid = false;
+    //         }
+    //     });
+    //     return isValid;
+    // }
     
-    app.get("/api/movieData", function(req, res) {
-        res.json(movieData);
-    });
-
-    app.post("/api/movieData", function(req, res) {
-        
-        var closeMatch = {
-            title: "",
-            location: "",
-            address:"",
-            scoreDifference: 1000
-        };
-        console.log(req.body);
-
-        var userData = req.body;
-        var userScores = userData.scores;
-
-        console.log(userScores);
-
-        var totalDifference = 0;
-
-        for (var i = 0; i < movieData.length; i++) {
-            console.log(movieData[i]);
-            totalDifference = 0;
-
-            for (var k = 0; k < movieData[i].scores[k]; k++) {
-                totalDifference += Math.abs(parseInt(userScores[k]) - parseInt(friends[i].scores[k]));
-
-                if (totalDifference <= closeMatch.friendDifference) {
-                    
-                    closeMatch.name = movieData[i].name;
-                    closeMatch.location = movieData[i].location;
-                    closeMatch.address = movieData[i].address
-                    closeMatch.scoreDifference = totalDifference;
-                }
-            }
-        }
-
-        movieData.push(userData);
-
-        res.json(closeMatch);
-    });
-
-}
-
-$("#surveyResults").on("click", function() {
-    function validateForm() {
-        var isValid = true;
-        $(".chosen-select").each(function() {
-            if ($(this).val() === "") {
-                isValid = false;
-            }
-        });
-        return isValid;
-    }
-    
-    if (validateForm()) {
-         userData = {
+    if (isValid) {
+        var userData = {
             name: $("#name").val(),
             photo: $("#photo").val(),
             scores: [
@@ -74,27 +31,19 @@ $("#surveyResults").on("click", function() {
                 $("#q9").val(),
                 $("#q10").val()
             ]
+            
         };
-        var currentURL = window.location.origin;
+        console.log(userData);
+        // var currentURL = window.location.origin;
         // Ajax call for receiving response after POST req
-        $.post(currentURL + "/api/movieData", userData, function(data) {
-
+        $.post("/api/movies", userData, function(data) {
+            console.log(data)
             $("#matchName").text(data.name);
-            $("#matchImg").attr("src", data.photo);
-    
-        $("#resultsModal").modal("toggle");
-        
-    
+            $("#matchImg").attr("src", data.photo);    
         });
     }
-    else {
-        alert("Survey incomplete");
-    }
-
-  return false;
+    else { alert("Please complete the survey");}
 });
-
-
 
 
 // var movies = require("./result.js")
