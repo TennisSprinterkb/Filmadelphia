@@ -1,25 +1,22 @@
-// var movieData = require('../../data/movieData.js');
 
-$("#surveyResults").on("click", function(event) {
+// document onload may render better
+window.onload = function () {
+    $.get("/api/user_data").then(function (data) {
+        $(".member-name").text(data.name);
+    })
+}
+
+$("#submit").on("click", function (event) {
     event.preventDefault();
 
-var surveyForm = document.getElementById('surveyForm');
-isValid = surveyForm.checkValidity();
-    // function validateForm() {
-    //     var isValid = true;
-    //     $(".chosen-select").each(function() {
-    //         if ($(this).val() === "") {
-    //             isValid = false;
-    //         }
-    //     });
-    //     return isValid;
-    // }
-    
+    var surveyForm = document.getElementById('surveyForm');
+    isValid = surveyForm.checkValidity();
+
+
     if (isValid) {
         var userData = {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
-            scores: [
+            // name: $("#name").val(),
+            "scores": [
                 $("#q1").val(),
                 $("#q2").val(),
                 $("#q3").val(),
@@ -31,74 +28,20 @@ isValid = surveyForm.checkValidity();
                 $("#q9").val(),
                 $("#q10").val()
             ]
-            
-        };
-        console.log(userData);
-        // var currentURL = window.location.origin;
-        // Ajax call for receiving response after POST req
-        $.post("/api/movies", userData, function(data) {
-            console.log(data)
+
+        }
+        var currentURL = window.location.origin;
+        // Ajax call sending survey results to conduct logic and return movie match
+        $.post(currentURL + "/api/movies", userData, function (data) {
             $("#matchName").text(data.name);
-            $("#matchImg").attr("src", data.photo);    
+            window.location.href = "map_interactive.html"   
+            // this redirect works but data not ending up in the #matchName div
         });
     }
-    else { alert("Please complete the survey");}
+    else { alert("Please complete the survey"); }
 });
 
 
-// var movies = require("./result.js")
-
-// $(document).ready(function() {
-//   $("#surveyResults").on("click", function() {
-//         function validateForm() {
-//             var isValid = true;
-//             $(".form-control").each(function() {
-//                 if ($(this).val() === "") {
-//                     isValid = false;
-//                 }
-//             });
-
-//             $(".chosen-select").each(function() {
-//                 if ($(this).val() === "") {
-//                     isValid = false;
-//                 }
-//             });
-//             return isValid;
-//         }
-      
-// 		if (validateForm()) {
-//             var movieMatch;
-//             if (userData > 30) {movieMatch === movies[0]}
-//              {
-//                 $("#movieMatch").html(data.name[0]);
-//             }
-
-//             else (userData < 30 === movies[1] {
-//                 $("#movieMatch").html(data.name[1]);
-//             })
-// 			var currentURL = window.location.origin;
-// 			// Ajax call for receiving response after POST req
-// 			$.post(currentURL + "/api/friends", userData, function(data) {
-
-//                 $("#movieMatch").text(data.name);
-//                 // $("#matchImg").attr("src", data.photo);
-		
-// 			$("#results").html("toggle");
-			
-		
-//             });
-//         }
-//         else {
-//             alert("Survey incomplete");
-//         }
-
-//         return false;
-//     });
-  
- 
- 
- 
- 
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
 //   $.get("/api/user_data").then(function(data) {
