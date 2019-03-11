@@ -15,7 +15,6 @@ $("#submit").on("click", function (event) {
 
     if (isValid) {
         var userData = {
-            // name: $("#name").val(),
             "scores": [
                 parseInt($("#q1").val()),
                 parseInt($("#q2").val()),
@@ -40,11 +39,3 @@ $("#submit").on("click", function (event) {
     }
     else { alert("Please complete the survey"); }
 });
-
-
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-//   $.get("/api/user_data").then(function(data) {
-//     $(".member-name").text(data.email);
-//   });
-// });
