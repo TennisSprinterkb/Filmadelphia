@@ -8,7 +8,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+
+
+
+  <link href="styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,29 +25,58 @@
     </div>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="jumbotron text-center">
-        <h2> Welcome <span class="member-name"></span></h2>
-            <h1><i class="text-center" aria-hidden="true"></i>Filmadelphia</h1>
+<div class="containerf">
+  <div class="hero">
+    <div class="hero_img">
+      <img src="images/welcome_plain.jpg">
+    </div>
+      <div class="hero_text">
+        <p class="font_subtitle">
+          WELCOME
+        </p>
+        <p class="font_subtitle">
+          SUZANNE
+        </p>
+        <p class="font_byline">
+            Experience the Philadelphia seen in movies and learn something new about our city.
+        </p>
             
-            <h2>Welcome to Filemadelphia a place where you can come see where movies were filmed all around Philadelphia and learn the historical significance about that site.</h2>
-            <h2>You can choose to browse our map and pick a movie from which ever neighborhood you would like, or take our survey to match you up with the best movie/tour to try.</h2>
-            <br>
-      
-            <div>
-              <button type="button" class="btn btn-md btn-info" data-toggle="modal" data-target="#surveyModel"><h3><span class="glyphicon glyphicon-list-alt"></span> Match Survey</h3></button> | <a href="./browse.html"><button type="button" class="btn btn-md btn-success"><h3><span class="glyphicon glyphicon-map-marker"></span> Browse Map</h3></button></a>
-            </div>
+        <p class="font_byline">   
+            Browse our map of movie sites or take a survey to find your new favorite Philly flick and go sightseeing its movies scenes.
+        </p>
+        <p class="font_byline">   
+            Share your thoughts and your pics!
+        </p>
+      </div>  <!--close hero text-->
+    <!-- CIRCLE BUTTONS ON BOTTOM LEFT -->
+    <div class="button_loc_desk">
+      <div class="round-button left_btn">
+        <button class="button" data-toggle="modal" data-target="#surveyModel">
+          <div class="round-button-circle">
+            <a href="http://example.com" class="round-button">
+              Take the survey!
+            </a>
+          </div>
+        </button>
       </div>
-      
-      <footer class="footer">
-        <div class="container text-center">
-          <p><a href="#">learn more about the Creators</a> | <a href="#">Link to things</a></p>
+      <div class="round-button right_btn">
+          <button type="button" class="button" data-toggle="modal" data-target="#surveyModel">
+            <div class="round-button-circle">
+              <a href="./browse.html" class="round-button">
+                Movie Site Map
+              </a>
+            </div>
+          </button>
         </div>
-      </footer>
-      
-   </div>
+      </div>  <!--close button_loc_desk-->
+    </div>  <!--close hero-->
+  </div>  <!--close containerf-->
+  
+  <footer class="footer">
+    <div class="container text-center">
+      <p><a href="#">learn more about the Creators</a> | <a href="#">Link to things</a></p>
+    </div>
+  </footer>
 
         <div id="surveyModel" class="modal fade" role="dialog">
             <div class="modal-dialog">
