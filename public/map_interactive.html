@@ -135,10 +135,12 @@ rel="stylesheet"  type='text/css'>
     <div id='infoDisplay'></div>
     <div id='map'></div>
     <script>
+
+        var mapStyle = 'mapbox://styles/mapbox/streets-v9';
         mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
         var map = new mapboxgl.Map({
             container: 'map', // container id
-            style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+            style: mapStyle, // stylesheet location
             center: [-75.16, 39.945], // starting position [lng, lat]
             zoom: 13 // starting zoom
         });
