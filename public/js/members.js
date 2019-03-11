@@ -1,63 +1,46 @@
-var movies = require("./result.js")
+// document onload may render better
+window.onload = function () {
+    $.get("/api/user_data").then(function (data) {
+        $(".member-name").text(data.name);
+    })
+}
 
-$(document).ready(function() {
-  $("#submit").on("click", function() {
-		// event.preventDefault();
-        // Form validation
-        function validateForm() {
-            var isValid = true;
-            $(".form-control").each(function() {
-                if ($(this).val() === "") {
-                    isValid = false;
-                }
-            });
+$("#submit").on("click", function (event) {
+    event.preventDefault();
 
-            $(".chosen-select").each(function() {
-                if ($(this).val() === "") {
-                    isValid = false;
-                }
-            });
-            return isValid;
+    var surveyForm = document.getElementById('surveyForm');
+    isValid = surveyForm.checkValidity();
+
+
+    if (isValid) {
+        var userData = {
+            // name: $("#name").val(),
+            "scores": [
+                parseInt($("#q1").val()),
+                parseInt($("#q2").val()),
+                parseInt($("#q3").val()),
+                parseInt($("#q4").val()),
+                parseInt($("#q5").val()),
+                parseInt($("#q6").val()),
+                parseInt($("#q7").val()),
+                parseInt($("#q8").val()),
+                parseInt($("#q9").val()),
+                parseInt($("#q10").val())
+            ]
+
         }
-      
-		if (validateForm()) {
-			var userData = {
-				scores: [
-					$("#q1").val(),
-					$("#q2").val(),
-					$("#q3").val(),
-					$("#q4").val(),
-					$("#q5").val(),
-					$("#q6").val(),
-					$("#q7").val(),
-					$("#q8").val(),
-					$("#q9").val(),
-					$("#q10").val()
-				]
-			};
-			var currentURL = window.location.origin;
-			// Ajax call for receiving response after POST req
-			$.post(currentURL + "/api/friends", userData, function(data) {
+        var currentURL = window.location.origin;
+        // Ajax call sending survey results to conduct logic and return movie match
+        $.post(currentURL + "/api/movies", userData, function (data) {
+            $("#matchName").text(data.title);
+            window.location.href = "map_interactive.html"   
+            // this redirect works but data not ending up in the #matchName div
+        });
+    }
+    else { alert("Please complete the survey"); }
+});
 
-                $("#matchName").text(data.name);
-                $("#matchImg").attr("src", data.photo);
-		
-			$("#resultsModal").modal("toggle");
-			
-		
-            });
-        }
-        else {
-            alert("Survey incomplete");
-        }
 
-        return false;
-    });
-  
- 
- 
- 
- 
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
 //   $.get("/api/user_data").then(function(data) {
