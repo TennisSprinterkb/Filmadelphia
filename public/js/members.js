@@ -30,10 +30,17 @@ $("#submit").on("click", function (event) {
         }
         var currentURL = window.location.origin;
         // Ajax call sending survey results to conduct logic and return movie match
-        $.post(currentURL + "/api/movies", userData, function (data) {
-            $("#matchName").text(data.title);
-            window.location.href = "map_interactive.html"   
-            // this redirect works but data not ending up in the #matchName div
+        $.post(currentURL + "/api/movies", userData, function (result) {
+            // $("#matchName").text(data.title);
+            $.ajax({
+                url: '/api/user_data',
+                type: 'PUT',
+                data: result,
+                success: function(re) {
+                    // Do something with the result
+                    window.location.href = "map_interactive.html"
+                }
+            });
         });
     }
     else { alert("Please complete the survey"); }
