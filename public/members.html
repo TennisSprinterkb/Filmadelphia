@@ -41,7 +41,7 @@
           WELCOME
         </p>
         <p class="font_subtitle">
-          SUZANNE
+          <span class="member-name">SUZANNE</span>
         </p>
         <p class="font_byline">
           Experience the Philadelphia seen in movies and learn something new about our city.
@@ -75,14 +75,10 @@
               </a>
             </div>
           </button>
-        </div>
-        <!--close right_btn-->
-      </div>
-      <!--close button_loc_desk-->
-    </div>
-    <!--close hero-->
-  </div>
-  <!--close containerf-->
+        </div> <!--close right_btn-->
+      </div> <!--close button_loc_desk-->
+    </div> <!--close hero-->
+  </div> <!--close containerf-->
 
   <footer class="footer">
     <div class="container text-center">
@@ -90,23 +86,34 @@
     </div>
   </footer>
 
-  </div>
+  <!-- </div> -->
 
   <div id="surveyModel" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialogf">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Fill Out Survey Below</h5>
-          <h3 class="modal-title"><strong>Click the submit button below to take you to your match!</strong></h3>
-        </div>
+          <div class="logo_title">  
+             <img src="images/logo_filmadephia.jpg"/> 
+          </div> <!-- logo title-->
+          <div class="logo_title2">  
+            <h3 class="font_survey_title">
+                Submit Survey button below
+            </h3>
+          </div>         <!-- logo title2-->
+        </div>   <!-- modal header -->
         <div class="modal-body text-center">
-          <!-- <div class="container text-center"> -->
           <form role="form" class="absolute" id="surveyForm">
-            <h2>Survey Questions</h2>
-            <h3><strong>Q1</strong></h3>
-            <h4>Would you say you are athletic?</h4>
+            <h2 class="font_survey_body q_top_marg">
+              Find your favorite Philly flick!
+            </h2>
+
+            <h4 class="font_survey_body q_top_marg">
+              Would you say you are athletic?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q1" required>
-              <option value=""></option>
+              <option value="">
+                  Choose...
+              </option>
               <option value="1">1 (No Im lazy!)</option>
               <option value="2">2</option>
               <option value="3">3(Meh)</option>
@@ -114,10 +121,11 @@
               <option value="5">5 (YASSS!!!)</option>
             </select>
 
-            <h3><strong>Q2</strong></h3>
-            <h4>Are you a loyal person?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              Are you a loyal person?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q2" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Not really)</option>
               <option value="2">2</option>
               <option value="3">3(Kinda)</option>
@@ -125,10 +133,11 @@
               <option value="5">5 (YASSS!!!)</option>
             </select>
 
-            <h3><strong>Q3</strong></h3>
-            <h4>How easily frightened are you?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              How easily frightened are you?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q3" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Never Scared)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -136,10 +145,11 @@
               <option value="5">5 (Yikes!!)</option>
             </select>
 
-            <h3><strong>Q4</strong></h3>
-            <h4>How much of a hustler are you?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              How much of a hustler are you?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q4" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Not that great at it)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -147,10 +157,11 @@
               <option value="5">5 (Everyday Im Husltlin!)</option>
             </select>
 
-            <h3><strong>Q5</strong></h3>
-            <h4>Do you like stand up?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              Do you like stand up?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q5" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Not really)</option>
               <option value="2">2</option>
               <option value="3">3(Sure)</option>
@@ -158,10 +169,11 @@
               <option value="5">5 (HAHAHA YASSS!!!)</option>
             </select>
 
-            <h3><strong>Q6</strong></h3>
-            <h4>Do hospitals scare you?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              Do hospitals scare you?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q6" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (I love needles)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -169,10 +181,11 @@
               <option value="5">5 (They are Scary)</option>
             </select>
 
-            <h3><strong>Q7</strong></h3>
-            <h4>How fair do you feel the justice system is?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              How fair do you feel the justice system is?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q7" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Super fair)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -180,10 +193,11 @@
               <option value="5">5 (Needs work)</option>
             </select>
 
-            <h3><strong>Q8</strong></h3>
-            <h4>I would much rather go outdoors than going clubbing!</h4>
+            <h4 class="font_survey_body q_top_marg">
+              I would much rather go outdoors than going clubbing!
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q8" required>
-              <option value=""></option>
+               <option value="">Choose...</option>
               <option value="1">1 (Nope)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -191,10 +205,11 @@
               <option value="5">5 (I love the outdoors!)</option>
             </select>
 
-            <h3><strong>Q9</strong></h3>
-            <h4>I love history!?</h4>
+            <h4 class="font_survey_body q_top_marg">
+              I love history!?
+            </h4>
             <select data-placeholder="" class="chosen-select" id="q9" required>
-              <option value=""></option>
+              <option value="">Choose...</option>
               <option value="1">1 (Don't really care for it!)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -202,10 +217,12 @@
               <option value="5">5 (YASSS History!!!)</option>
             </select>
 
-            <h3><strong>Q10</strong></h3>
-            <h4>Ghosts do not scare me!</h4>
-            <select data-placeholder="" class="chosen-select" id="q10" required>
-              <option value=""></option>
+            <h4 class="font_survey_body q_top_marg">
+              Ghosts do not scare me!
+            </h4>
+            <select data-placeholder="" class="chosen-select q_btm_marg" id="q10" required>
+                <option value="">Choose...</option>
+              <!-- <option value=""></option> -->
               <option value="1">1 (I don't like them!)</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -213,23 +230,28 @@
               <option value="5">5 (I am a ghost!)</option>
             </select>
 
+
             <br>
 
-            <button type="submit" class="btn btn-success mt-2" id="submit"><i class="fa fa-check-circle"
-                aria-hidden="true"></i>Submit</button>
+            <!-- CIRCLE BUTTONS ON BOTTOM LEFT -->
+            <div class="button_loc_modal b_top_marg">
+                <div class="round-button">
+                  <button type="submit" class="button roundButton" id="submit">
+                    <div class="round-button-circle">
+                      <a href="#" class="round-button">
+                        Submit Survey
+                      </a>
+                    </div>  <!--close round button circle-->
+                  </button>
+                </div>  <!--close round-button-->
+              </div> <!--close button_loc_modal-->
+              
           </form>
-        </div>
-      </div>
+        </div> <!-- modal body-->
+      </div> <!-- modal content-->
+    </div> <!-- modal-dialogf-->
+  </div> <!-- surveyModel-->
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Start Over</button>
-      </div>
-
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
   <script type="text/javascript" src="js/members.js"></script>
 
 </body>
