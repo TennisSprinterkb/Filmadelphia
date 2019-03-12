@@ -122,9 +122,6 @@ res.json(data)})
         }
       });
   });
-  // db.Movie.create(req.body).then(function (dbMovie) {
-  //   res.json(dbMovie);
-  // // });
 
   // // Delete an example by id
   // app.delete("/api/movies/:id", function (req, res) {
