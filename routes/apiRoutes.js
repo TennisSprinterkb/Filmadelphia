@@ -22,7 +22,8 @@ module.exports = function (app) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      movie: req.body.movie
     }).then(function () {
       res.redirect(307, "/api/login");
     }).catch(function (err) {
@@ -50,13 +51,27 @@ module.exports = function (app) {
       res.json({
         name: req.user.name,
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        movie: req.user.movie
       });
     }
   });
 
+  app.get("/api/users", function(req, res) {
+    db.User.findOne({
+ where: { name: req.user.name}
+  })
+  .then(function(data) {
+  console.log(data.movie)
+res.json(data)})
+  .catch(function(err) {
+    console.log(err);
+    res.json(err);
+    // res.status(422).json(err.errors[0].message);
+  });
+});
   // Get all movies
-  app.get("/api/movies", function (req, res) {
+  app.get("/api/movies", function(req, res) {
     res.json(moviesData);
   });
 
@@ -69,13 +84,6 @@ module.exports = function (app) {
         address: "",
         scoreDifference: 1000
       };
-      console.log(req.body);
-      // var userScore = [];
-      // var userData = req.body;
-      // userScore = req.body.scores;
-
-      // console.log(req.body.scores);
-
       var totalDifference = 0;
       function getSum(total, num) {
         return total + num;
@@ -96,18 +104,32 @@ module.exports = function (app) {
         }
       }
       console.log(closeMatch);
-      // movieData.push(userData);
       res.json(closeMatch);
     }
   });
+
+  app.put("/api/user_data", function (req, res) {
+    db.User.update({
+      movie: req.body.title
+    },
+      { where: { name: req.user.name } })
+      .then(function (result) {
+        if (result.changedRows == 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+          return res.status(404).end();
+        } else {
+          res.status(200).end();
+        }
+      });
+  });
   // db.Movie.create(req.body).then(function (dbMovie) {
   //   res.json(dbMovie);
-  // });
+  // // });
 
-  // Delete an example by id
-  app.delete("/api/movies/:id", function (req, res) {
-    db.Movie.destroy({ where: { id: req.params.id } }).then(function (dbMovie) {
-      res.json(dbMovie);
-    });
-  });
+  // // Delete an example by id
+  // app.delete("/api/movies/:id", function (req, res) {
+  //   db.Movie.destroy({ where: { id: req.params.id } }).then(function (dbMovie) {
+  //     res.json(dbMovie);
+  //   });
+  // });
 };

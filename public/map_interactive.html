@@ -18,212 +18,262 @@
 <link 
 href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
 rel="stylesheet"  type='text/css'>
-    <link rel="stylesheet" href="styles/sampleStyle.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+    <!-- <link rel="stylesheet" href="styles/sampleStyle.css"> -->
+  <style>
+      body {
+          margin: 0;
+          padding: 0;
+      }
 
-        /* #map {
-            position: absolute;
-            right: 0;
-            top: 5;
-            bottom: 0;
-            width: 60%;
-        } */
-    </style>
+      #infoDisplay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+      }
+
+      #map {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+      }
+  </style>
 </head>
 
 <body>
-        <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse p-0">
-                <form class="form-inline mx-2">
-                  <div class="btn-toolbar mr-auto" role="toolbar">
-                    <div class="btn-group btn-group-sm mr-2" role="group">
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><i class="fa fa-bars fa-fw"></i></button>
-                    </div>
-                  </div>
-                <ul class="navbar-nav">
-                  <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountmenu"><span class="hidden-sm-down mr-2">Login</span><i class="fa fa-user"></i></a>
-                    <div id="accountmenu" class="dropdown">
-                    <div class="dropdown-menu dropdown-menu-right p-0">
-                      <div class="card">
-                        <div class="card-header">
-                          <ul class="nav nav-tabs card-header-tabs">
-                            <li class="nav-item">
-                              <a class="nav-link active" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="card-block">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </li>
-                </ul>
-                </form>
-              </nav>
-              	<!-- Modal Sidebar -->
-  	<div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog">
-                <div class="modal-content">
-            <div id="SideMenu">
-              <div class="card">
-                <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuLayers" data-parent="#SideMenu">
-                  <i class="fa fa-map fa-fw"></i>&nbsp;Map Layers
-                </div>
-                <div id="MenuLayers" class="collapse show">
-                  <div class="card-block list-group mg1">
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Road</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Hybrid</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuStuff" data-parent="#SideMenu">
-                  <i class="fa fa-bullseye fa-fw"></i>&nbsp;Stuff 'n Junk
-                </div>
-                <div id="MenuStuff" class="collapse">
-                  <div class="card-block list-group mg1">
-<h4id="matchName"></h4>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuTools" data-parent="#SideMenu">
-                  <i class="fa fa-wrench fa-fw"></i>&nbsp;Tools
-                </div>
-                <div id="MenuTools" class="collapse">
-                  <div class="card-block list-group mg1">
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header btn btn-default mh1" data-toggle="collapse" data-target="#MenuSettings" data-parent="#SideMenu">
-                  <i class="fa fa-cog fa-fw"></i>&nbsp;Settings
-                </div>
-                <div id="MenuSettings" class="collapse">
-                  <div class="card-block list-group mg1">
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="fa fa-question fa-fw"></i>&nbsp;Item</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-                </div><!-- modal-content -->
-            </div><!-- modal-dialog -->
-        </div><!-- modal -->
-    <div id="matchName"></div>
-    <div id='infoDisplay'></div>
-    <div id='map'></div>
-    <script>
+  <div class="container" id='infoDisplay'></div>
+  <div id='map'></div>
+  <script>
+      // Access token for MapBoxGL
+      mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
+      // MapBox layer
+      var map = new mapboxgl.Map({
+          container: 'map', // container id
+          // style: 'mapbox://styles/mapbox/streets-v9', // style if you want it to look like google maps-ish
+          style: 'mapbox://styles/mapbox/dark-v9', //grayscale style
+          center: [-75.16, 39.97], // starting position [lng, lat]
+          zoom: 12 // starting zoom
+      });
 
-        var mapStyle = 'mapbox://styles/mapbox/streets-v9';
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
-        var map = new mapboxgl.Map({
-            container: 'map', // container id
-            style: mapStyle, // stylesheet location
-            center: [-75.16, 39.945], // starting position [lng, lat]
-            zoom: 13 // starting zoom
-        });
+      // CHANGE HERE ALEX
+      // window.onload = function () {
+    $.get("/api/users").then(function(data) {
+        var movieChosen =data.movie
+        console.log(movieChosen)
+    
+      // var movieChosen = "All"; // hard coding the chosen movie
+
+      // There are three movies with three locations each as a GeoJSON
+      var featureArray = [{
+          "type": "Feature",
+          "properties": {
+              "title": "Rocky's apartment",
+              "movie": "Rocky",
+              "icon": "star",
+              "descriptionURL": "https://totalrocky.com/filming-location-guide/rockys-apartment.html",
+              "description": "This apartment was the first home that Rocky and Adrian shared."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.124070, 39.990016]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Mighty Mick's Gym",
+              "movie": "Rocky",
+              "icon": "star",
+              "descriptionURL": "https://totalrocky.com/filming-location-guide/mighty-micks-gym.html",
+              "description": "The building which stood in for Mighty Mick’s boxing gym never actually was a gym of any kind – all interior scenes of the gym were shot across the country in Los Angeles."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.132486, 39.982835]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Rocky Statue",
+              "movie": "Rocky",
+              "icon": "monument",
+              "descriptionURL": "https://totalrocky.com/filming-location-guide/the-philadelphia-museum-of-art.html",
+              "description": "The Philadelphia Museum of Art steps is one of the most famous movie locations of all time and a popular tourist attraction."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.179285, 39.965169]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Ben Franklin Bridge",
+              "movie": "National Treasure",
+              "icon": "star",
+              "descriptionURL": "https://www.imdb.com/title/tt0368891/trivia?item=tr3028540",
+              "description": "When the characters are seen entering Philadelphia, they are crossing on the Benjamin Franklin Bridge, a nod to the Founding Fathers theme in the movie."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.134414, 39.952935]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Franklin Institute",
+              "movie": "National Treasure",
+              "icon": "museum",
+              "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Franklin_Institute",
+              "description": "The Franklin Institute is a museum in Philadelphia dedicated to Benjamin Franklin where the second clue to the Templar Treasure is. Patrick Henry Gates donated the Silence Dogood letters to the Institute."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.172637, 39.958205]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Liberty Bell Center",
+              "movie": "National Treasure",
+              "icon": "monument",
+              "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Liberty_Bell",
+              "description": "The Liberty Bell was built during the Revolutionary War in Philadelphia and it is home Independence Hall. There is where the second clue was found to the Templar Treasure."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.150293, 39.949660]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "2302 St Albans Place",
+              "movie": "Sixth Sense",
+              "icon": "star",
+              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+              "description": "The main character who has an ability to see dead people lives on 2302 St. Albans Place with his mother."
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.180895, 39.943145]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "St. Augustine's Church",
+              "movie": "Sixth Sense",
+              "icon": "star",
+              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+              "description": "The main character runs into the St. Augustine's Church when seeking refuge"
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.146126, 39.955520]
+          }
+      },
+      {
+          "type": "Feature",
+          "properties": {
+              "title": "Butcher and Singer",
+              "movie": "Sixth Sense",
+              "icon": "restaurant",
+              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+              "description": "The restaurant where Crowe dines with his wife was originally called the Striped Bass, but is now Butcher and Singer"
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-75.166154, 39.949358]
+          }
+      }
+      ];
+
+      // empty array to push the new filtered array if you have a chosen movie from the user survey
+      var filteredArray = [];
+
+      // if the user never completed the survey and doesn't have a specific movie listed
+      if (movieChosen === "all") {
+          filteredArray = featureArray;
+      } else { // if the user has a specific movie based on survey results
+          for (var i = 0; i < featureArray.length; i++) {
+              if (movieChosen === featureArray[i].properties.movie) {
+                  filteredArray.push(featureArray[i]);
+              }
+          }
+      };
+
+      for (var j = 0; j < filteredArray.length; j++) {
+          // This portion below is just jquery to make the information appear on the left side in the div infoDisplay
+          var movieLocation = "<h2>" + filteredArray[j].properties.title + "</h2>";
+          var movieTitle = "<h3>" + filteredArray[j].properties.movie + "</h3>";
+          var movieDescription = "<p>" + filteredArray[j].properties.description + "</p>";
+          $("#infoDisplay").append("<div>" + movieLocation + movieTitle + movieDescription + "</div>");
+      }
+
+      map.on('load', function () {
+          map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function (error, image) {
+              if (error) throw error;
+              map.addImage('cat', image);
+              map.addLayer({
+                  "id": "symbols",
+                  "type": "symbol",
+                  "source": {
+                      "type": "geojson",
+                      "data": {
+                          "type": "FeatureCollection",
+                          "features": filteredArray // here is where the filtered GeoJSON is put into the map layer
+                      }
+                  },
+                  "layout": {
+                      "icon-image": "{icon}-15", // icon for movie location shows here
+                      "text-field": "{title}", // title of the movie location shows here
+                      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"], // font choices
+                      "text-offset": [0, 0.6], // title will appear below the icon
+                      "text-anchor": "top"
+                  },
+                  "paint": {
+                      "text-color": "#ffffff" // white color to the text
+                  }
+              });
+
+          });
+
+          // Current location of user
+          map.addControl(new mapboxgl.GeolocateControl({
+              positionOptions: {
+                  enableHighAccuracy: true
+              },
+              trackUserLocation: true
+          }));
 
 
-        map.on('load', function () {
-            map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function (error, image) {
-                if (error) throw error;
-                map.addImage('cat', image);
-                map.addLayer({
-                    "id": "symbols",
-                    "type": "symbol",
-                    "source": {
-                        "type": "geojson",
-                        "data": {
-                            "type": "FeatureCollection",
-                            "features": [{
-                                "type": "Feature",
-                                "properties": {
-                                    "title": "Something else",
-                                    "icon": "monument"
-                                },
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [-75.16, 39.945]
-                                }
-                            },
-                            {
-                                "type": "Feature",
-                                "properties": {
-                                    "title": "Someone's home",
-                                    "icon": "theatre"
-                                },
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [-75.165, 39.950]
-                                }
-                            },
-                            {
-                                "type": "Feature",
-                                "properties": {
-                                    "title": "Rocky Statue",
-                                    "icon": "monument"
-                                },
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [-75.18, 39.9649]
-                                }
-                            }] // end of features array
-                        }
-                    },
-                    "layout": {
-                        "icon-image": "{icon}-15",
-                        "text-field": "{title}",
-                        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                        "text-offset": [0, 0.6],
-                        "text-anchor": "top"
-                    }
-                });
+          // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+          map.on('click', 'symbols', function (e) {
+              map.flyTo({ center: e.features[0].geometry.coordinates });
+              // e.features[0].properties.movie if you want to just show what the movie is
+          });
 
-            });
+          // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
+          map.on('mouseenter', 'symbols', function () {
+              map.getCanvas().style.cursor = 'pointer';
+          });
 
-            // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
-            map.on('click', 'symbols', function (e) {
-                map.flyTo({ center: e.features[0].geometry.coordinates });
-                // This portion below is just jquery to make the information appear on the left side in the div infoDisplay
-                $("#infoDisplay").append("<h2>" + e.features[0].properties.title + "</h2>");
-            });
+          // Change it back to a pointer when it leaves.
+          map.on('mouseleave', 'symbols', function () {
+              map.getCanvas().style.cursor = '';
+          });
 
-            // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
-            map.on('mouseenter', 'symbols', function () {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'symbols', function () {
-                map.getCanvas().style.cursor = '';
-            });
-
-        });
-
-
-    </script>
+      });
+    })
+    // }
+  </script>
 
 <script>src="js/members.js"</script>
 </body>
