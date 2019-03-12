@@ -9,274 +9,313 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!-- icons -->
-<link 
-href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
-rel="stylesheet"  type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- icons -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
     <!-- <link rel="stylesheet" href="styles/sampleStyle.css"> -->
-  <style>
-      body {
-          margin: 0;
-          padding: 0;
-      }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
-      #infoDisplay {
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 50%;
-      }
+        #accordion {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+        }
 
-      #map {
-          position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          width: 50%;
-      }
-  </style>
+        #map {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+        }
+
+        img {
+            max-height: 300px;
+            max-width: 300px;
+        }
+
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container" id='infoDisplay'></div>
-  <div id='map'></div>
-  <script>
-      // Access token for MapBoxGL
-      mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
-      // MapBox layer
-      var map = new mapboxgl.Map({
-          container: 'map', // container id
-          // style: 'mapbox://styles/mapbox/streets-v9', // style if you want it to look like google maps-ish
-          style: 'mapbox://styles/mapbox/dark-v9', //grayscale style
-          center: [-75.16, 39.97], // starting position [lng, lat]
-          zoom: 12 // starting zoom
-      });
+    <div id='accordion'></div>
+    <div id='map'></div>
+    <script>
+        // Access token for MapBoxGL
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
+        // MapBox layer
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            // style: 'mapbox://styles/mapbox/streets-v9', // style if you want it to look like google maps-ish
+            style: 'mapbox://styles/mapbox/dark-v9', //grayscale style
+            center: [-75.16, 39.97], // starting position [lng, lat]
+            zoom: 12 // starting zoom
+        });
 
 
-      // window.onload = function () {
-    $.get("/api/users").then(function(data) {
-        var movieChosen =data.movie
-        console.log(movieChosen)
-    
-movieChosen = "all"; 
-      // hard coding the chosen movie
+        // window.onload = function () {
+        $.get("/api/users").then(function (data) {
+            var movieChosen = data.movie;
+            console.log(movieChosen);
 
-      // There are three movies with three locations each as a GeoJSON
-      var featureArray = [{
-          "type": "Feature",
-          "properties": {
-              "title": "Rocky's apartment",
-              "movie": "Rocky",
-              "icon": "star",
-              "descriptionURL": "https://totalrocky.com/filming-location-guide/rockys-apartment.html",
-              "description": "This apartment was the first home that Rocky and Adrian shared."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.124070, 39.990016]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Mighty Mick's Gym",
-              "movie": "Rocky",
-              "icon": "star",
-              "descriptionURL": "https://totalrocky.com/filming-location-guide/mighty-micks-gym.html",
-              "description": "The building which stood in for Mighty Mick’s boxing gym never actually was a gym of any kind – all interior scenes of the gym were shot across the country in Los Angeles."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.132486, 39.982835]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Rocky Statue",
-              "movie": "Rocky",
-              "icon": "monument",
-              "descriptionURL": "https://totalrocky.com/filming-location-guide/the-philadelphia-museum-of-art.html",
-              "description": "The Philadelphia Museum of Art steps is one of the most famous movie locations of all time and a popular tourist attraction."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.179285, 39.965169]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Ben Franklin Bridge",
-              "movie": "National Treasure",
-              "icon": "star",
-              "descriptionURL": "https://www.imdb.com/title/tt0368891/trivia?item=tr3028540",
-              "description": "When the characters are seen entering Philadelphia, they are crossing on the Benjamin Franklin Bridge, a nod to the Founding Fathers theme in the movie."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.134414, 39.952935]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Franklin Institute",
-              "movie": "National Treasure",
-              "icon": "museum",
-              "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Franklin_Institute",
-              "description": "The Franklin Institute is a museum in Philadelphia dedicated to Benjamin Franklin where the second clue to the Templar Treasure is. Patrick Henry Gates donated the Silence Dogood letters to the Institute."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.172637, 39.958205]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Liberty Bell Center",
-              "movie": "National Treasure",
-              "icon": "monument",
-              "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Liberty_Bell",
-              "description": "The Liberty Bell was built during the Revolutionary War in Philadelphia and it is home Independence Hall. There is where the second clue was found to the Templar Treasure."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.150293, 39.949660]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "2302 St Albans Place",
-              "movie": "Sixth Sense",
-              "icon": "star",
-              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
-              "description": "The main character who has an ability to see dead people lives on 2302 St. Albans Place with his mother."
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.180895, 39.943145]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "St. Augustine's Church",
-              "movie": "Sixth Sense",
-              "icon": "star",
-              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
-              "description": "The main character runs into the St. Augustine's Church when seeking refuge"
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.146126, 39.955520]
-          }
-      },
-      {
-          "type": "Feature",
-          "properties": {
-              "title": "Butcher and Singer",
-              "movie": "Sixth Sense",
-              "icon": "restaurant",
-              "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
-              "description": "The restaurant where Crowe dines with his wife was originally called the Striped Bass, but is now Butcher and Singer"
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [-75.166154, 39.949358]
-          }
-      }
-      ];
+            movieChosen = "all";
+            // hard coding the chosen movie
 
-      // empty array to push the new filtered array if you have a chosen movie from the user survey
-      var filteredArray = [];
+            // There are three movies with three locations each as a GeoJSON
+            var featureArray = [{
+                "type": "Feature",
+                "properties": {
+                    "title": "Rocky's apartment",
+                    "movie": "Rocky",
+                    "icon": "star",
+                    "descriptionURL": "https://totalrocky.com/filming-location-guide/rockys-apartment.html",
+                    "description": "This apartment was the first home that Rocky and Adrian shared.",
+                    "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_aptstreet1.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.124070, 39.990016]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Mighty Mick's Gym",
+                    "movie": "Rocky",
+                    "icon": "star",
+                    "descriptionURL": "https://totalrocky.com/filming-location-guide/mighty-micks-gym.html",
+                    "description": "The building which stood in for Mighty Mick’s boxing gym never actually was a gym of any kind – all interior scenes of the gym were shot across the country in Los Angeles.",
+                    "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_gym4.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.132486, 39.982835]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Rocky Statue",
+                    "movie": "Rocky",
+                    "icon": "monument",
+                    "descriptionURL": "https://totalrocky.com/filming-location-guide/the-philadelphia-museum-of-art.html",
+                    "description": "The Philadelphia Museum of Art steps is one of the most famous movie locations of all time and a popular tourist attraction.",
+                    "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_steps5.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.179285, 39.965169]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Ben Franklin Bridge",
+                    "movie": "National Treasure",
+                    "icon": "star",
+                    "descriptionURL": "https://www.imdb.com/title/tt0368891/trivia?item=tr3028540",
+                    "description": "When the characters are seen entering Philadelphia, they are crossing on the Benjamin Franklin Bridge, a nod to the Founding Fathers theme in the movie.",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg/300px-2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg"
 
-      // if the user never completed the survey and doesn't have a specific movie listed
-      if (movieChosen === "all") {
-          filteredArray = featureArray;
-      } else { // if the user has a specific movie based on survey results
-          for (var i = 0; i < featureArray.length; i++) {
-              if (movieChosen === featureArray[i].properties.movie) {
-                  filteredArray.push(featureArray[i]);
-              }
-          }
-      };
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.134414, 39.952935]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Franklin Institute",
+                    "movie": "National Treasure",
+                    "icon": "museum",
+                    "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Franklin_Institute",
+                    "description": "The Franklin Institute is a museum in Philadelphia dedicated to Benjamin Franklin where the second clue to the Templar Treasure is. Patrick Henry Gates donated the Silence Dogood letters to the Institute.",
+                    "image": "https://assets.visitphilly.com/wp-content/uploads/2018/02/The-Franklin-Institute-Franklin-Statue-J-Fusco-1200VP.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.172637, 39.958205]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Liberty Bell Center",
+                    "movie": "National Treasure",
+                    "icon": "monument",
+                    "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Liberty_Bell",
+                    "description": "The Liberty Bell was built during the Revolutionary War in Philadelphia and it is home Independence Hall. There is where the second clue was found to the Templar Treasure.",
+                    "image": "https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/travelagentcentral/1546011003/libertybellgetty.jpg?.q5tpQaV2Mh0m856Sk6GoSOzTsF4cT6q&itok=q-OobNyS"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.150293, 39.949660]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "2302 St Albans Place",
+                    "movie": "The Sixth Sense",
+                    "icon": "star",
+                    "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+                    "description": "The main character who has an ability to see dead people lives on 2302 St. Albans Place with his mother.",
+                    "image": "http://www.movie-locations.com/movies/s/SixthSense_StAlbans.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.180895, 39.943145]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "St. Augustine's Church",
+                    "movie": "The Sixth Sense",
+                    "icon": "star",
+                    "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+                    "description": "The main character runs into the St. Augustine's Church when seeking refuge",
+                    "image": "http://www.movie-locations.com/movies/s/SixthSense_StAugustine.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.146126, 39.955520]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Butcher and Singer",
+                    "movie": "The Sixth Sense",
+                    "icon": "restaurant",
+                    "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
+                    "description": "The restaurant where Crowe dines with his wife was originally called the Striped Bass, but is now Butcher and Singer",
+                    "image": "http://www.movie-locations.com/movies/s/SixthSense_StripedBass.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.166154, 39.949358]
+                }
+            }
+            ];
 
-      for (var j = 0; j < filteredArray.length; j++) {
-          // This portion below is just jquery to make the information appear on the left side in the div infoDisplay
-          var movieLocation = "<h2>" + filteredArray[j].properties.title + "</h2>";
-          var movieTitle = "<h3>" + filteredArray[j].properties.movie + "</h3>";
-          var movieDescription = "<p>" + filteredArray[j].properties.description + "</p>";
-          $("#infoDisplay").append("<div>" + movieLocation + movieTitle + movieDescription + "</div>");
-      }
+            // empty array to push the new filtered array if you have a chosen movie from the user survey
+            var filteredArray = [];
 
-      map.on('load', function () {
-          map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function (error, image) {
-              if (error) throw error;
-              map.addImage('cat', image);
-              map.addLayer({
-                  "id": "symbols",
-                  "type": "symbol",
-                  "source": {
-                      "type": "geojson",
-                      "data": {
-                          "type": "FeatureCollection",
-                          "features": filteredArray // here is where the filtered GeoJSON is put into the map layer
-                      }
-                  },
-                  "layout": {
-                      "icon-image": "{icon}-15", // icon for movie location shows here
-                      "text-field": "{title}", // title of the movie location shows here
-                      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"], // font choices
-                      "text-offset": [0, 0.6], // title will appear below the icon
-                      "text-anchor": "top"
-                  },
-                  "paint": {
-                      "text-color": "#ffffff" // white color to the text
-                  }
-              });
+            // if the user never completed the survey and doesn't have a specific movie listed
+            if (movieChosen === "all") {
+                filteredArray = featureArray;
+            } else { // if the user has a specific movie based on survey results
+                for (var i = 0; i < featureArray.length; i++) {
+                    if (movieChosen === featureArray[i].properties.movie) {
+                        filteredArray.push(featureArray[i]);
+                    }
+                }
+            };
 
-          });
+            for (var j = 0; j < filteredArray.length; j++) {
+                // This portion below is just jquery to make the information appear on the left side of the screen
+                var movieLocation = "<div class=\"card-header\" id=\"heading" + j + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + j + "\" aria-expanded=\"true\" aria-controls=\"collapse" + j + "\">" + filteredArray[j].properties.title + "</button></h5></div>";
+                // var movieTitle = "<h3>" + filteredArray[j].properties.movie + "</h3>";
+                var movieDescription = "<div id=\"collapse" + j + "\" class=\"collapse show\" aria-labelledby=\"heading" + j + "\" data-parent=\"#accordion\"> <div class=\"card-body\">" + filteredArray[j].properties.description + "</div></div>";
+                $("#accordion").append("<div class=\"card\">" + movieLocation + movieDescription + "</div>");
+            }
 
-          // Current location of user
-          map.addControl(new mapboxgl.GeolocateControl({
-              positionOptions: {
-                  enableHighAccuracy: true
-              },
-              trackUserLocation: true
-          }));
+            map.on('load', function () {
+                map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('cat', image);
+                    map.addLayer({
+                        "id": "symbols",
+                        "type": "symbol",
+                        "source": {
+                            "type": "geojson",
+                            "data": {
+                                "type": "FeatureCollection",
+                                "features": filteredArray // here is where the filtered GeoJSON is put into the map layer
+                            }
+                        },
+                        "layout": {
+                            "icon-image": "{icon}-15", // icon for movie location shows here
+                            "text-field": "{title}", // title of the movie location shows here
+                            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"], // font choices
+                            "text-offset": [0, 0.6], // title will appear below the icon
+                            "text-anchor": "top"
+                        },
+                        "paint": {
+                            "text-color": "#ffffff" // white color to the text
+                        }
+                    });
+
+                });
+
+                // Current location of user
+                map.addControl(new mapboxgl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: true
+                    },
+                    trackUserLocation: true
+                }));
 
 
-          // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
-          map.on('click', 'symbols', function (e) {
-              map.flyTo({ center: e.features[0].geometry.coordinates });
-              // e.features[0].properties.movie if you want to just show what the movie is
-          });
+                // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+                map.on('click', 'symbols', function (e) {
+                    map.flyTo({ center: e.features[0].geometry.coordinates });
+                    var image = "<img src=" + e.features[0].properties.image + ">";
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var description = e.features[0].properties.description;
 
-          // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
-          map.on('mouseenter', 'symbols', function () {
-              map.getCanvas().style.cursor = 'pointer';
-          });
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
 
-          // Change it back to a pointer when it leaves.
-          map.on('mouseleave', 'symbols', function () {
-              map.getCanvas().style.cursor = '';
-          });
+                    // shows image in a popup
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(image)
+                        .addTo(map);
+                });
 
-      });
-    })
+                // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
+                map.on('mouseenter', 'symbols', function () {
+                    map.getCanvas().style.cursor = 'pointer';
+                });
+
+                // Change it back to a pointer when it leaves.
+                map.on('mouseleave', 'symbols', function () {
+                    map.getCanvas().style.cursor = '';
+                });
+
+            });
+        })
     // }
-  </script>
+    </script>
 
-<script>src="js/members.js"</script>
+    <script src = "js/members.js"></script>
 </body>
 
 </html>
