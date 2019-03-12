@@ -58,13 +58,14 @@ rel="stylesheet"  type='text/css'>
           zoom: 12 // starting zoom
       });
 
-      // CHANGE HERE ALEX
+
       // window.onload = function () {
     $.get("/api/users").then(function(data) {
         var movieChosen =data.movie
         console.log(movieChosen)
     
-      // var movieChosen = "All"; // hard coding the chosen movie
+movieChosen = "all"; 
+      // hard coding the chosen movie
 
       // There are three movies with three locations each as a GeoJSON
       var featureArray = [{

@@ -37,7 +37,8 @@
         "prettier/prettier": "error",
         "scripts":  {
             "lint": "eslint **/*.js --quiet",
-            "test": "npm run lint"
+            "test": "npm run lint",
+            "fix": "eslint --fix ."
         }
     }
 }

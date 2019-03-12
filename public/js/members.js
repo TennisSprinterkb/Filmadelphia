@@ -1,9 +1,9 @@
-// document onload may render better
-window.onload = function () {
+
+$(document).ready(function () {
     $.get("/api/user_data").then(function (data) {
         $(".member-name").text(data.name);
     })
-}
+
 
 $("#submit").on("click", function (event) {
     event.preventDefault();
@@ -31,17 +31,17 @@ $("#submit").on("click", function (event) {
         var currentURL = window.location.origin;
         // Ajax call sending survey results to conduct logic and return movie match
         $.post(currentURL + "/api/movies", userData, function (result) {
-            // $("#matchName").text(data.title);
             $.ajax({
                 url: '/api/user_data',
                 type: 'PUT',
                 data: result,
-                success: function(re) {
-                    // Do something with the result
+                success: function (re) {
                     window.location.href = "map_interactive.html"
                 }
             });
         });
     }
     else { alert("Please complete the survey"); }
+})
+
 });
