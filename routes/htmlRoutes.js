@@ -30,9 +30,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
-  // // Render 404 page for any unmatched routes
-  // app.get("*", function(req, res) {
-  //   res.render("404");
-  // });
+  // Render 404 page for any unmatched routes
+  app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/404.html"));
+  });
 };
 

@@ -82,21 +82,25 @@ res.json(data)})
         title: "",
         location: "",
         address: "",
-        scoreDifference: 1000
+        scoreDifference: 100
       };
       var totalDifference = 0;
       function getSum(total, num) {
-        return total + num;
+        return Number(total*1) + (num*1);
       }
 
+      userScore = req.body.scores;
+      console.log(userScore);
+      userTotal = userScore.reduce(getSum);
+
+      // loop through movies array to find closest score match
       for (var i = 0; i < movieData.length; i++) {
-        console.log(movieData[i]);
-        totalDifference = 0;
-        userTotal = req.body.scores;
+        var totalDifference;
+       
         totalDifference += Math.abs(
-          parseInt(userTotal.reduce(getSum)) - parseInt(movieData[i].score));
+          (userTotal) - parseInt(movieData[i].score));
         console.log(totalDifference)
-        if (totalDifference >= closeMatch.scoreDifference) {
+        if (totalDifference <= closeMatch.scoreDifference) {
           closeMatch.title = movieData[i].title;
           closeMatch.location = movieData[i].location;
           closeMatch.address = movieData[i].address;
@@ -122,11 +126,4 @@ res.json(data)})
         }
       });
   });
-
-  // // Delete an example by id
-  // app.delete("/api/movies/:id", function (req, res) {
-  //   db.Movie.destroy({ where: { id: req.params.id } }).then(function (dbMovie) {
-  //     res.json(dbMovie);
-  //   });
-  // });
 };
