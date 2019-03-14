@@ -31,10 +31,6 @@ font-size: 20px;
   color: #e4751b; 
 }
 
-option .font_grey{
-  color:  #999999!important;
-}
-
 /* ROUND BUTTONS CSS ON HERO PAGES*/
 .round-button {
   width:50%;
@@ -170,23 +166,39 @@ float: right;
   background-color: transparent!important;
 }
 
-/* .left_btn_modal{
-float:left;
+/* SIGNUP AND LOGIN PAGES INCLUDING VIDEO*/
+.containerv {
+  /* max-width: 1282px; */
+  /* width: 100%; */
+  margin: 0 auto;
+  background-color: transparent!important;
 }
-.right_btn_modal{
-float: right;
+
+
+/* 
+#heroVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
 } */
 
-/* .round-button-circlex{
+/* Add some content at the bottom of the video/page */
+/* .content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
   width: 100%;
-  height:0;
-  padding-bottom: 100%;
-  border-radius: 50%;
-  overflow:hidden;
-  background:  #ff0000;
-  /* REMEMBER TO SELECT BACKGROUND: COLORS  */
-  /* box-shadow: 0 0 3px gray; */
-/* }
-.round-button-circlex:hover {
-  background:#660000;
-} */ 
+  padding: 20px;
+} */
+
+.hero_text_video {
+  top: 60px;
+  left: 600px;
+  position: absolute;
+  width: 340px;
+  z-index: 10;
+  background-color: transparent!important;
+}
