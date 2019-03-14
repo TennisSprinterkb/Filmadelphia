@@ -15,7 +15,7 @@ module.exports = function (app) {
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  //  Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
@@ -57,52 +57,57 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/users", function(req, res) {
+  app.get("/api/users", function (req, res) {
     db.User.findOne({
- where: { name: req.user.name}
-  })
-  .then(function(data) {
-  console.log(data.movie)
-res.json(data)})
-  .catch(function(err) {
-    console.log(err);
-    res.json(err);
-    // res.status(422).json(err.errors[0].message);
+      where: { name: req.user.name }
+    })
+      .then(function (data) {
+        console.log(data.movie)
+        res.json(data)
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.json(err);
+      });
   });
-});
   // Get all movies
-  app.get("/api/movies", function(req, res) {
+  app.get("/api/movies", function (req, res) {
     res.json(moviesData);
   });
 
-  // Create a new example
+  // Send user survey results for movie matching
   app.post("/api/movies", function (req, res) {
     if (req.user) {
       var closeMatch = {
         title: "",
         location: "",
         address: "",
-        scoreDifference: 1000
+        scoreDifference: 100
       };
       var totalDifference = 0;
       function getSum(total, num) {
-        return total + num;
+        return Number(total * 1) + (num * 1);
       }
 
+      userScore = req.body.scores;
+      console.log(userScore);
+      userTotal = userScore.reduce(getSum);
+
+      // loop through movies array to find closest score match
       for (var i = 0; i < movieData.length; i++) {
-        console.log(movieData[i]);
-        totalDifference = 0;
-        userTotal = req.body.scores;
+        var totalDifference=0;
+
         totalDifference += Math.abs(
-          parseInt(userTotal.reduce(getSum)) - parseInt(movieData[i].score));
+          (userTotal) - parseInt(movieData[i].score));
         console.log(totalDifference)
-        if (totalDifference >= closeMatch.scoreDifference) {
+        if (totalDifference <= closeMatch.scoreDifference) {
           closeMatch.title = movieData[i].title;
           closeMatch.location = movieData[i].location;
           closeMatch.address = movieData[i].address;
           closeMatch.scoreDifference = totalDifference;
         }
       }
+      // return matching movie
       console.log(closeMatch);
       res.json(closeMatch);
     }
@@ -122,11 +127,4 @@ res.json(data)})
         }
       });
   });
-
-  // // Delete an example by id
-  // app.delete("/api/movies/:id", function (req, res) {
-  //   db.Movie.destroy({ where: { id: req.params.id } }).then(function (dbMovie) {
-  //     res.json(dbMovie);
-  //   });
-  // });
 };

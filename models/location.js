@@ -1,3 +1,5 @@
+// for eventual move to mysql DB
+
 module.exports = function(sequelize, DataTypes) {
   var Location = sequelize.define("Location", {
     placeName: {
