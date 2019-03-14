@@ -1,7 +1,7 @@
 // array of objects, each object pertaining to a user
 var movieData = [
   {
-    score: 50,
+    score: 45,
     title: "National Treasure",
     location: "Independence Hall",
     address: "520 Chestnut St, Philadelphia, PA 19106",
@@ -17,12 +17,20 @@ var movieData = [
     longitude: -75.1660838
   },
   {
-    score: 38,
+    score: 35,
     title: "Rocky",
     location: "Rocky's House",
     address: "unknown",
     latitude: 39.990016,
     longitude: -75.124070
+  },
+  {
+    score: 25,
+    title: "Trading Places",
+    location: "Winthorpe Residence",
+    address: "2014 Delancey Place",
+    latitude: 39.9473837,
+    longitude: -75.1748947
   }
 ];
 

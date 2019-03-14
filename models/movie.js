@@ -1,3 +1,5 @@
+// for eventual move to mysql DB
+
 module.exports = function(sequelize, DataTypes) {
   var Movie = sequelize.define("Movie", {
     // Giving the Movie model a name of type STRING
@@ -19,8 +21,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Movie.associate = function(models) {
-    // Associating Movie with Posts
-    // When an Movie is deleted, also delete any associated Posts
+    // Associating Movie with locations
+    // When an Movie is deleted, also delete any associated locations
     Movie.hasMany(models.Location, {
       onDelete: "cascade"
     });
