@@ -12,7 +12,7 @@ $(document).ready(function() {
   var signupShow = function(){
     $('#formScreen').show();
   };
-  setTimeout(signupShow, 5000);
+  setTimeout(signupShow, 4000);
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
