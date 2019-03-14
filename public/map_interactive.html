@@ -22,9 +22,9 @@
     <!-- icons -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
-    <!-- <link rel="stylesheet" href="styles/sampleStyle.css"> -->
     <!-- icon made by Freepik from https://www.flaticon.com-->
-<link rel="icon" href="images/clapperboard.png">
+    <link rel="icon" href="images/clapperboard.png">
+    <link href="/styles/styles.css" rel="stylesheet" type="text/css">
     <style>
         body {
             margin: 0;
@@ -56,32 +56,58 @@
             max-width: 400px;
             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
+        .mapboxgl-popup-content {
+            padding: 0px;
+            border-radius: 15px;
+        }
+        .btn-link {
+            color: black;
+        }
+        .btn-link:hover {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #223438;
+            color: #999999;
+            padding: 10px;
+        }
+        .footer-link {
+            color: #999999;
+        }
+
+        /* commented out navbar because I couldnt get it to function properly */
+        .navbar-brand {
+            color: black;
+            z-index: 100;
+
+        }
     </style>
 </head>
 
 <body>
+   <div class="mb-5em">
     <div id='accordion'></div>
     <div id='map'></div>
+    <footer class="footer">
+        <div class="container text-center">
+          <p><a class="footer-link" href="/creators">learn more about the Creators</a> | <a class="footer-link" href="/resources">Link to resources</a></p>
+        </div>
+    </div>
+      </footer>
+   
     <script>
-        // Access token for MapBoxGL
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
-        // MapBox layer
-        var map = new mapboxgl.Map({
-            container: 'map', // container id
-            // style: 'mapbox://styles/mapbox/streets-v9', // style if you want it to look like google maps-ish
-            style: 'mapbox://styles/mapbox/dark-v9', //grayscale style
-            center: [-75.16, 39.97], // starting position [lng, lat]
-            zoom: 12 // starting zoom
-        });
+       
 
-
-        // window.onload = function () {
         $.get("/api/users").then(function (data) {
+       
             var movieChosen = data.movie;
-            console.log(movieChosen);
-
-            // movieChosen = "all";
-            // hard coding the chosen movie
 
             // There are three movies with three locations each as a GeoJSON
             var featureArray = [{
@@ -89,10 +115,13 @@
                 "properties": {
                     "title": "Rocky's apartment",
                     "movie": "Rocky",
+                    "poster": "https://m.media-amazon.com/images/M/MV5BMTY5MDMzODUyOF5BMl5BanBnXkFtZTcwMTQ3NTMyNA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
                     "icon": "star",
                     "descriptionURL": "https://totalrocky.com/filming-location-guide/rockys-apartment.html",
                     "description": "This apartment was the first home that Rocky and Adrian shared.",
-                    "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_aptstreet1.jpg"
+                    "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_aptstreet1.jpg",
+                    "colors": ["white", "black"],
+                    "mapStyle":"mapbox://styles/mapbox/light-v9"
                 },
                 "geometry": {
                     "type": "Point",
@@ -117,11 +146,11 @@
             {
                 "type": "Feature",
                 "properties": {
-                    "title": "Rocky Statue",
+                    "title": "Philadelphia Museum of Art",
                     "movie": "Rocky",
                     "icon": "monument",
                     "descriptionURL": "https://totalrocky.com/filming-location-guide/the-philadelphia-museum-of-art.html",
-                    "description": "The Philadelphia Museum of Art steps is one of the most famous movie locations of all time and a popular tourist attraction.",
+                    "description": "The steps of the Philadelphia Museum of Art are one of the most famous movie locations of all time and a popular tourist attraction.",
                     "image": "https://totalrocky.com/wp-content/uploads/2010/12/guide_steps5.jpg"
                 },
                 "geometry": {
@@ -134,10 +163,13 @@
                 "properties": {
                     "title": "Ben Franklin Bridge",
                     "movie": "National Treasure",
+                    "poster": "https://m.media-amazon.com/images/M/MV5BMTY3NTc4OTYxMF5BMl5BanBnXkFtZTcwMjk5NzUyMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
                     "icon": "star",
                     "descriptionURL": "https://www.imdb.com/title/tt0368891/trivia?item=tr3028540",
-                    "description": "When the characters are seen entering Philadelphia, they are crossing on the Benjamin Franklin Bridge, a nod to the Founding Fathers theme in the movie.",
-                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg/300px-2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg"
+                    "description": "When the main characters are seen entering Philadelphia, they are crossing on the Benjamin Franklin Bridge, a nod to the Founding Fathers theme in the movie.",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg/300px-2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg",
+                    "colors":["white", "#774908"],
+                    "mapStyle":"mapbox://styles/mapbox/bright-v9"
 
                 },
                 "geometry": {
@@ -151,8 +183,8 @@
                     "title": "Franklin Institute",
                     "movie": "National Treasure",
                     "icon": "museum",
-                    "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Franklin_Institute",
-                    "description": "The Franklin Institute is a museum in Philadelphia dedicated to Benjamin Franklin where the second clue to the Templar Treasure is. Patrick Henry Gates donated the Silence Dogood letters to the Institute.",
+                    "descriptionURL": "http://www.movie-locations.com/movies/n/National-Treasure.php",
+                    "description": "The Franklin Institute is a science museum in Philadelphia that also houses much Benjamin Franklin memorabilia.  The main characters find an important clue to the Templar Treasure there in the Silence Dogood letters written by Ben Franklin as a teenager.",
                     "image": "https://assets.visitphilly.com/wp-content/uploads/2018/02/The-Franklin-Institute-Franklin-Statue-J-Fusco-1200VP.jpg"
                 },
                 "geometry": {
@@ -166,8 +198,8 @@
                     "title": "Liberty Bell Center",
                     "movie": "National Treasure",
                     "icon": "monument",
-                    "descriptionURL": "https://nationaltreasure.fandom.com/wiki/Liberty_Bell",
-                    "description": "The Liberty Bell was built during the Revolutionary War in Philadelphia and it is home Independence Hall. There is where the second clue was found to the Templar Treasure.",
+                    "descriptionURL": "https://en.wikipedia.org/wiki/Liberty_Bell#Early_days_(1754%E2%80%931846)",
+                    "description": "The Liberty Bell was commissioned in 1752 and originally lived in what is now known as Independence Hall.  It now resides at The Liberty Bell Center, at which the second clue to the Templar Treasure is found in the film.",
                     "image": "https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/travelagentcentral/1546011003/libertybellgetty.jpg?.q5tpQaV2Mh0m856Sk6GoSOzTsF4cT6q&itok=q-OobNyS"
                 },
                 "geometry": {
@@ -180,10 +212,13 @@
                 "properties": {
                     "title": "2302 St Albans Place",
                     "movie": "The Sixth Sense",
+                    "poster": "https://m.media-amazon.com/images/M/MV5BMWM4NTFhYjctNzUyNi00NGMwLTk3NTYtMDIyNTZmMzRlYmQyXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_.jpg",
                     "icon": "star",
                     "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
                     "description": "The main character who has an ability to see dead people lives on 2302 St. Albans Place with his mother.",
-                    "image": "http://www.movie-locations.com/movies/s/SixthSense_StAlbans.jpg"
+                    "image": "http://www.movie-locations.com/movies/s/SixthSense_StAlbans.jpg",
+                    "colors": ["#03080c", "orange"],
+                    "mapStyle":"mapbox://styles/akluger/cjt8vk8ib04au1fqmsrkx1x90"
                 },
                 "geometry": {
                     "type": "Point",
@@ -199,6 +234,7 @@
                     "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
                     "description": "The main character runs into the St. Augustine's Church when seeking refuge",
                     "image": "http://www.movie-locations.com/movies/s/SixthSense_StAugustine.jpg"
+                    
                 },
                 "geometry": {
                     "type": "Point",
@@ -208,7 +244,7 @@
             {
                 "type": "Feature",
                 "properties": {
-                    "title": "Butcher and Singer",
+                    "title": "Butcher and Singer (Formerly The Striped Bass)",
                     "movie": "The Sixth Sense",
                     "icon": "restaurant",
                     "descriptionURL": "http://www.movie-locations.com/movies/s/Sixth-Sense.php",
@@ -218,6 +254,55 @@
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-75.166154, 39.949358]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "The Duke & Duke Bank (Wells Fargo Building)",
+                    "movie": "Trading Places",
+                    "poster": "https://m.media-amazon.com/images/M/MV5BYTEzMjBiMzktMjQyMS00YzBhLTgzNWQtNzA0NmEwMTNmMDQ2XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SY1000_SX675_AL_.jpg",
+                    "icon": "town-hall",
+                    "descriptionURL": "https://en.wikipedia.org/wiki/Wells_Fargo_Building_(Philadelphia)",
+                    "description": "The center of business for the Dukes in the film, this actual bank was built in 1928 and is listed on the National Register of Historic Places",
+                    "image": "http://4.bp.blogspot.com/-F853Ijg3TYw/Uejh3WflB9I/AAAAAAAAII0/1Pj38X1ILD0/s1600/DukeAndDuke2_135+S+Broad_TradingPlaces.jpg",
+                    "colors": ["#eee2cb","black"],
+                    "mapStyle":"mapbox://styles/mapbox/basic-v9"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.170975, 39.918147]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Winthorpe Residence (2014 Delancey Place)",
+                    "movie": "Trading Places",
+                    "icon": "star",
+                    "descriptionURL": "https://en.wikipedia.org/wiki/Delancey_Place",
+                    "description": "Luxurious home featured in multiple scenes of the film, it is a civil-war era mansion on 'The most filmed block of Philadelphia",
+                    "image": "http://2.bp.blogspot.com/-7UeAk_z4XcQ/UejheEV9DOI/AAAAAAAAIIA/dz-XXoRVhng/s1600/AykroydsHouse1_2014+DelanceyPl_TradingPlaces.jpg"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.1748947, 39.9473837]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "title": "Trading Places Police Station (Community College of Philadelphia)",
+                    "movie": "Trading Places",
+                    "icon": "police",
+                    "descriptionURL": "https://en.wikipedia.org/wiki/Philadelphia_Mint",
+                    "description": "Part of an iconic scene when Dan Akroyd's character gets out on bail, this building was originally the Philadelphia Mint and is now part of the Community College",
+                    "image": "http://1.bp.blogspot.com/-QCYTcfHUaCQ/Ueji1qlQwTI/AAAAAAAAIJ0/eXp-f3wXV3M/s1600/PoliceSt1_1700+Spring+Garden_TradingPlaces.jpg"
+
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.1656502, 39.9624081]
                 }
             }
             ];
@@ -238,11 +323,32 @@
 
             for (var j = 0; j < filteredArray.length; j++) {
                 // This portion below is just jquery to make the information appear on the left side of the screen
+                var movieMap = filteredArray[0].properties.mapStyle;
+                var movieColor = filteredArray[0].properties.colors[0];
+                var fontColor = filteredArray[0].properties.colors[1];
                 var movieLocation = "<div class=\"card-header\" id=\"heading" + j + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + j + "\" aria-expanded=\"true\" aria-controls=\"collapse" + j + "\">" + filteredArray[j].properties.title + "</button></h5></div>";
-                // var movieTitle = "<h3>" + filteredArray[j].properties.movie + "</h3>";
-                var movieDescription = "<div id=\"collapse" + j + "\" class=\"collapse show\" aria-labelledby=\"heading" + j + "\" data-parent=\"#accordion\"> <div class=\"card-body\">" + filteredArray[j].properties.description + "</div></div>";
+                var movieTitle = "<h3>" + filteredArray[0].properties.movie + "</h3>";
+                var moviePoster = "<img style=\"max-height:725px;max-width:500px;\"src=\"" + filteredArray[0].properties.poster + "\"></img>";
+                var movieDescription = "<div id=\"collapse" + j + "\" class=\"collapse hide\" aria-labelledby=\"heading" + j + "\" data-parent=\"#accordion\"> <div class=\"card-body\">" + filteredArray[j].properties.description + "</div></div>";
                 $("#accordion").append("<div class=\"card\">" + movieLocation + movieDescription + "</div>");
+                $("#accordion, .card-header, .card-body").css("background-color",movieColor);
+                $(".card").css("border", "none");
+                $("#accordion, .btn-link, .card-body").css("color",fontColor);
             }
+            $("#accordion").prepend("<div class=\"text-center\">" + moviePoster+ "</div>"+"<div class=\"text-center\">" + movieTitle+ "</div>");
+
+      // Public Access token for MapBoxGL (ReadOnly) so not necessary to hide
+      mapboxgl.accessToken = 'pk.eyJ1IjoiaXplaW1haSIsImEiOiJjanN2M3o5YnQwMGVwNGFwanRtM2l0bzF5In0.hlOn2QUlP2gW7hYZyxqHHQ';
+        // MapBox layer
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            // style: 'mapbox://styles/mapbox/streets-v9', // style if you want it to look like google maps-ish
+            style: movieMap, //grayscale style
+            center: [-75.16, 39.97], // starting position [lng, lat]
+            zoom: 12 // starting zoom
+        });
+
+
 
             map.on('load', function () {
                 map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function (error, image) {
@@ -266,7 +372,7 @@
                             "text-anchor": "top"
                         },
                         "paint": {
-                            "text-color": "#ffffff" // white color to the text
+                            "text-color": fontColor // white color to the text
                         }
                     });
 
@@ -314,10 +420,8 @@
 
             });
         })
-    // }
     </script>
-
-    <script src = "js/members.js"></script>
+     
 </body>
 
 </html>
