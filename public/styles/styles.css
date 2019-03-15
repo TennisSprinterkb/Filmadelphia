@@ -1,6 +1,6 @@
-body{
+/* body{
   background-color: black;
-}
+} */
 
 .roundButton{
   background-color: transparent!important;
@@ -37,7 +37,6 @@ font-size: 20px;
 
 /* ROUND BUTTONS CSS ON HERO PAGES*/
 .round-button {
-  /* width:50%; */
   margin: 0 auto;
 }
 .round-button-circle {
@@ -53,6 +52,21 @@ font-size: 20px;
 .round-button-circle:hover {
   background:#223438;
 }
+
+.round-button-circle-gn {
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  overflow:hidden;
+  background: #a2b738
+  /* REMEMBER TO SELECT BACKGROUND: COLORS  */
+  /* box-shadow: 0 0 3px gray; */
+}
+.round-button-circle-gn:hover{
+  background:#223438;
+}
+
 .round-button a {
   display:block;
   float:left;
@@ -63,7 +77,6 @@ font-size: 20px;
   padding-right: 5%;
   line-height:1.25em;
   margin-top:-0.5em;
-        
   text-align:center;
   color:#e2eaf3;
   font-family:Verdana;
@@ -71,8 +84,6 @@ font-size: 20px;
   font-weight:bold;
   text-decoration:none;
 }
-
-
 .button_loc_desk{
   bottom: 30px;
   left: 20px;
@@ -80,7 +91,6 @@ font-size: 20px;
   width: 340px;
   background-color: transparent!important;
 }
-
 .left_btn{
 float:left;
 }
@@ -88,17 +98,13 @@ float:left;
 float: right;
 }
 
-
-
 /* LOGIN MEMBER SIGNUP PAGES */
-
 .containerf {
   max-width: 1282px;
   width: 100%;
   margin: 0 auto;
   background-color: transparent!important;
 }
-
 .hero {
   display: block;
   padding-left: 10px;
@@ -106,18 +112,15 @@ float: right;
   position: relative;
   background-color: transparent!important;
 }
-
 .hero img{
   height: auto;
   vertical-align: middle;
   width: 100%;
 }
-
 .hero_img{
     display: block;
     position: relative;
 }
-
 .hero_text {
   bottom: 30px;
   right: 100px;
@@ -139,11 +142,9 @@ float: right;
     height: auto;
     margin: 1.75rem auto;
 }}
-
 .logo_title{
   margin: -1rem auto -1rem -1rem;
 }
-
 .logo_title2{
   margin: 1rem auto -1rem -1rem;
 }
@@ -152,30 +153,26 @@ float: right;
   height: auto;
   vertical-align: middle;
 }
-
 .q_top_marg{
   margin-top: 7%;
 }
-
 .q_btm_marg{
   margin-bottom: 50px;
 }
 .b_top_marg{
   margin-top: 50px;
 }
-
 .button_loc_modal{
   margin: 0 auto;
   width: 340px;
   background-color: transparent!important;
 }
 
-/* SIGNUP AND LOGIN PAGES INCLUDING VIDEO*/
+/* V STANDS FOR VIDEO SIGNUP AND LOGIN PAGES INCLUDING VIDEO*/
 .containerv {
   margin: 0 auto;
   background-color: transparent!important;
 }
-
 .containY{
   margin: 0 150px 0 50px;
 }
@@ -185,7 +182,6 @@ float: right;
   position: relative;
   background-color: black!important;
 }
-
 .hero_text_video {
   top: 80px;
   left: 600px;
@@ -194,7 +190,19 @@ float: right;
   z-index: 10;
   background-color: transparent!important;
 }
-
 .b_v_marg {
   margin-left: 50px;
+}
+.button_loc_video{
+  bottom: -80px;
+  left: 20px;
+  position: absolute;
+  width: 225px;
+  background-color: transparent!important;
+}
+.left_btnv{
+float:left;
+}
+.right_btnv{
+float: right;
 }

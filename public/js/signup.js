@@ -31,6 +31,7 @@ $(document).ready(function() {
     nameInput.val("");
     emailInput.val("");
     passwordInput.val("");
+    console.log("step 1");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
