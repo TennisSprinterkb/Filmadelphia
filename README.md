@@ -13,6 +13,7 @@ A user would sign up and fill a survey that will determine a movie based on thei
 ```
 - MySQL database
 - Node.js
+- Bootstrap
 - Express.js
 - Sequelize with Node MySQL2
 - MapboxGL.js (map visualization)
@@ -24,6 +25,7 @@ A user would sign up and fill a survey that will determine a movie based on thei
 ---
 
 **Screenshots of deployed website**
+![Welcome page](img/lgpage.png)
 
 ---
 
