@@ -19,6 +19,15 @@ font-family: 'Roboto', 'Arial', sans-serif;
 font-size: 20px;
 }
 
+.font_byline_rs{
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 20px;
+  display: inline-block;
+  padding-left: 125px;
+  }
+  
+
+
 .font_survey_body{
   font-family: 'Roboto', 'Arial', sans-serif;
 }
@@ -100,7 +109,7 @@ float: right;
 
 /* LOGIN MEMBER SIGNUP PAGES */
 .containerf {
-  max-width: 1282px;
+  /* max-width: 1282px; */
   width: 100%;
   margin: 0 auto;
   background-color: transparent!important;
@@ -121,6 +130,8 @@ float: right;
     display: block;
     position: relative;
     z-index: 0;
+    /* width: 100%
+    height: auto; */
 }
 .hero_text {
   bottom: 160px;
@@ -175,19 +186,23 @@ float: right;
   background-color: transparent!important;
 }
 .containY{
-  margin: 0 150px 0 50px;
+  margin: 0 0px 0 0px;
+  /* width: 960px; */
+  margin: 0 150px 0 190px;
 }
 .herov {
   display: block;
-  margin-left: 200px!important;
+  margin-right: 138px!important;
+  margin-left: 88px!important;
   position: relative;
   background-color: black!important;
 }
 .hero_text_video {
+  /* overflow: hidden; */
   top: 80px;
   left: 600px;
   position: absolute;
-  width: 450px;
+  width: 350px;
   z-index: 1;
   background-color: transparent!important;
 }
@@ -206,4 +221,31 @@ float:left;
 }
 .right_btnv{
 float: right;
+}
+.row_v {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+
+/* RS STANDS FOR RESOURCES RESOURCES PAGE NAVBAR AND LAYOUT */
+.rsnav{
+  border: #e6e6e6 1pt solid;
+  padding: 0px;
+}
+.logo_titlers{
+  margin: 0;
+}
+.logo_titlers img{
+  width: 35%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.rs_v_align{
+  vertical-align: text-top;
 }
