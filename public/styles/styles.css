@@ -238,3 +238,21 @@ footer {
 .footer-link_memb {
   color: #999999;
 }
+
+/* RS STANDS FOR RESOURCES RESOURCES PAGE NAVBAR AND LAYOUT */
+.rsnav{
+  border: #e6e6e6 1pt solid;
+  padding: 0px;
+  margin-bottom: 100px;
+}
+.logo_titlers{
+  margin: 0;
+}
+.logo_titlers img{
+  width: 35%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.rs_v_align{
+  vertical-align: text-top;
